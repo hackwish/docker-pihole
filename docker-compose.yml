@@ -32,7 +32,25 @@ services:
     # cap_add:
     #  - NET_ADMIN # Required if you are using Pi-hole as your DHCP server, else not needed
     restart: unless-stopped
-
+  pialert:
+    container_name: pialert
+    image: jokobsk/pi.alert:latest
+    volumes:
+      - etc-pihole/:/etc/pihole:ro
+      - ./config-pialert:/home/pi/pialert/config
+      - ./db-pialert:/home/pi/pialert/db
+    environment:
+      PUID: 1000
+      PGID: 1000
+      SET_CONTAINER_TIMEZONE: 'true'
+      CONTAINER_TIMEZONE: America/Santiago
+      PORT: 20211
+      HOST_USER_GID: 1000
+      HOST_USER_ID: 1000
+    restart: unless-stopped
+    network_mode: host
 volumes:
   etc-pihole:
   etc-dnsmasq.d:
+  config-pialert:
+  db-pialert:
