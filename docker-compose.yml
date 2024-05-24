@@ -34,11 +34,11 @@ services:
     restart: unless-stopped
   pialert:
     container_name: pialert
-    image: jokobsk/pi.alert:latest
+    image: jokobsk/netalertx:latest
     volumes:
       - ./etc-pihole/:/etc/pihole:ro
-      - ./config-pialert:/home/pi/pialert/config
-      - ./db-pialert:/home/pi/pialert/db
+      - ./config-pialert:/app/config
+      - ./db-pialert:/app/db
     dns:
       - 127.0.0.1
       - 9.9.9.9
@@ -52,6 +52,7 @@ services:
       PGID: 1000
       SET_CONTAINER_TIMEZONE: 'true'
       CONTAINER_TIMEZONE: America/Santiago
+      TZ: America/Santiago
       PORT: 20211
       HOST_USER_GID: 1000
       HOST_USER_ID: 1000

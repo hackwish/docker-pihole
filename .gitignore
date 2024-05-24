@@ -1,4 +1,4 @@
 data/
-config/
+config.*/
 etc-*/
 *pialert/
