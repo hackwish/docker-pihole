@@ -28,7 +28,7 @@ services:
     volumes:
       - './etc-pihole:/etc/pihole'
       - './etc-dnsmasq.d:/etc/dnsmasq.d'
-      - './adlists.list:/etc/pihole/adlists.list:ro'
+      - './adlists.list:/etc/pihole/adlists.list'
     #   https://github.com/pi-hole/docker-pi-hole#note-on-capabilities
     # cap_add:
     #  - NET_ADMIN # Required if you are using Pi-hole as your DHCP server, else not needed
