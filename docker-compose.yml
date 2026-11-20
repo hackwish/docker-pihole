@@ -58,6 +58,10 @@ services:
       - https://1.0.0.1/dns-query
       - --upstream
       - https://1.0.0.2/dns-query
+      - --upstream
+      - https://dns.google/dns-query
+      - --upstream
+      - https://dns.quad9.net/dns-query
     expose:
       - "5053/tcp"
       - "5053/udp"
